@@ -6,7 +6,6 @@ const ContainerApp = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  min-width: 100vw;
   min-height: 100vh;
   background-color: red;
    
