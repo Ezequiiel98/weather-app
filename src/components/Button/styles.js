@@ -1,8 +1,8 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
-const dynamicStyles = ({ light, round }) => css`
-  background-color: ${light ? '#E7E7EB' : '#6E707A'};
+const dynamicStyles = ({ light, blue, round }) => css`
+  background-color: ${light ? '#E7E7EB' : blue ? '#3C47E9' : '#6E707A'};
   border-radius: ${round ? '50%' : '0'};
   padding: ${round ? '8px' : '12px 15px'};
   widht: ${round ? '22px' : 'auto'};
