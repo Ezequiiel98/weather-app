@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Button from 'components/Button';
 
 import WeatherDays from './components/WeatherDays';
+import WeatherInfo from './components/WeatherInfo';
 
 const ContainerWeather = styled.div`
   flex: 1;
@@ -41,6 +42,7 @@ export default function Main() {
         </Button>
       </ContainerButtons>
       <WeatherDays />
+      <WeatherInfo />
     </ContainerWeather>
   );
 }
