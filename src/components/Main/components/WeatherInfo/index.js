@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import iconWindDirection from 'assets/icons/windDirection.svg';
 
 const ContainerWeatherInfo = styled.div`
   color: #E7E7EB;
@@ -20,9 +21,9 @@ const ContainerInfo = styled.div`
 const ItemInfo = styled.div`
   background-color: #1E213A;
   min-width: 48%;
-  min-height: 200px;
   margin-top: 20px;
   margin-bottom: 30px;
+  padding-bottom: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,7 +57,6 @@ const ContainerPercentage = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   min-width: 80%;
-  margin-bottom: 15px;
 
   & > p {
     padding: 0;
@@ -64,7 +64,7 @@ const ContainerPercentage = styled.div`
   }
 
   & > p:last-of-type {
-    margin: 8px 0 8px auto;
+    margin: 8px 0 0 auto;
   }
 `;
 
@@ -89,13 +89,28 @@ const PercentageFill = styled.div`
 const ContainerWindDirection = styled.div`
   display: flex;
   margin-top: 20px;
+  justify-content: space-between;
+  min-width: 90px;
+
+  & > p {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
 `;
 
 const IconDirection = styled.div`
   background-color: #6E707A;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  padding: 5px;
+  
+  & > img {
+    display: block;
+    margin: auto;
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 export default function WeatherInfo() {
@@ -111,7 +126,7 @@ export default function WeatherInfo() {
           </div>
           <ContainerWindDirection>
             <IconDirection>
-              <img src="" alt="" />
+              <img src={iconWindDirection} alt="Wind direction" />
             </IconDirection>
             <p>wsw</p>
           </ContainerWindDirection>

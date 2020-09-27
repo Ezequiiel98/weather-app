@@ -8,10 +8,11 @@ import WeatherInfo from './components/WeatherInfo';
 const ContainerWeather = styled.div`
   flex: 1;
   padding: 15px 20px;
-  @media (min-width: 768px) {
-    padding: 15px 50px;
-  }
   background-color: #100E1D;
+
+  @media (min-width: 768px) {
+    padding: 15px 90px;
+  }
 `;
 
 const ContainerButtons = styled.div`
