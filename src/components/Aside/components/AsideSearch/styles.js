@@ -1,14 +1,17 @@
 import styled from '@emotion/styled';
 
 export const ContainerAsideSearch = styled.div`
-  padding: 10px 20px;
-  max-width: 100%;
+  padding: 10px;
+
+  @media (min-width: 480px) {
+    padding: 10px 35px;
+  }
 `;
 
 export const ButtonClose = styled.button`
-  padding: 8px;
   background-color: transparent;
   border: none;
+  padding: 8px 0 8px 8px;
   display: block;
   margin: auto 0 auto auto;
 
@@ -22,12 +25,16 @@ export const ButtonClose = styled.button`
 `;
 
 export const InputGroup = styled.div`
-  margin-top: 20px;
   display: flex;
-  justify-content: center;
-
+  max-width: 280px;
+  margin: 20px auto 0 auto;
+  
   &>button {
     padding: 9px 12px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 100%;  
   }
 `;
 
@@ -38,8 +45,11 @@ export const Input = styled.input`
   background-color: #1E213A;
   color: #616475;
   font-size: 16px;
-  max-width: 160px;
-  margin-right: 10px;
+  max-width: 150px;
+  
+  @media (min-width: 310px) {
+    margin-right: 10px;
+  }
 `;
 
 export const IconSearch = styled.img`
@@ -64,7 +74,8 @@ export const ButtonPlace = styled.button`
   background-color: transparent;
   color: #E7E7EB;
   padding: 15px 10px;
-  min-width: 300px; 
+  width: 250px;
+  max-width: 250px; 
   font-size: 16px;
   font-weight: 500px;
   border: 1px solid transparent; 

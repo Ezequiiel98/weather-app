@@ -1,32 +1,24 @@
 import React from 'react';
 import Aside from 'components/Aside';
+import Main from 'components/Main';
 import styled from '@emotion/styled';
 
 const ContainerApp = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   min-height: 100vh;
-  background-color: red;
    
   @media(min-width: 768px) {
     flex-direction: row;
   }
 `;
 
-const ContainerInfoWeather = styled.div`
-  flex: 1;
-  background: green;
-`;
-
-
-function App() {
+export default function App() {
   return (
     <ContainerApp>
       <Aside />
-      <ContainerInfoWeather><h1>info</h1></ContainerInfoWeather>
+      <Main />
     </ContainerApp>
   );
 }
 
-export default App;

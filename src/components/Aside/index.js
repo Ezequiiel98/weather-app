@@ -12,7 +12,7 @@ const ContainerAside = styled.aside`
 export default function Aside() {
   return (
     <ContainerAside>
-      <AsideSearch />
+      <AsideInfo />
     </ContainerAside>
   );
 }

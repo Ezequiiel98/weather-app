@@ -5,7 +5,7 @@ const dynamicStyles = ({ light, blue, round }) => css`
   background-color: ${light ? '#E7E7EB' : blue ? '#3C47E9' : '#6E707A'};
   border-radius: ${round ? '50%' : '0'};
   padding: ${round ? '8px' : '12px 15px'};
-  widht: ${round ? '22px' : 'auto'};
+  width: ${round ? '22px' : 'auto'};
   height: ${round ? '22px' : 'auto'};
   color: ${light ? '#000' : '#fff'};
 `;
