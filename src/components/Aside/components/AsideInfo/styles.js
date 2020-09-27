@@ -68,7 +68,7 @@ export const DegressType = styled.span`
   line-height: 0;
   opacity: .6;
   display: inline-flex;
-  letter-spacing: -5px;
+  letter-spacing: -3px;
   transform: translate(-2px, 14px);
   font-weight: 400;
 

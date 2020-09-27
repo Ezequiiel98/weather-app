@@ -14,6 +14,6 @@ export default function Button({ round, light, blue, children }) {
 Button.propTypes = {
   blue: PropTypes.bool,
   children: PropTypes.node,
-  light: PropTypes.node,
+  light: PropTypes.bool,
   round: PropTypes.bool
 };
