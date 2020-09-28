@@ -1,17 +1,48 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import iconAimSight from 'assets/icons/aimSight.svg';
+import iconPin from 'assets/icons/pin.svg';
+import imgWeather from 'assets/img/shower.png';
+import Button from 'components/Button';
 
-import AsideInfo from './components/AsideInfo';
+import { ContainerAside, 
+  ContainerButtons,
+  IconAimSight,
+  ContainerImgWeather,
+  ImgWeather, 
+  WeatherInfoAside,
+  Degress, 
+  DegressType,
+  Weather,
+  Date,
+  Location
+} from './styles';
 
-const ContainerAside = styled.aside`
-  background-color: #1E213A;
-  color: #E7E7EB;
-`;
 
 export default function Aside() {
   return (
     <ContainerAside>
-      <AsideInfo />
+      <ContainerButtons>
+        <Button>
+          Search for places
+        </Button>
+        <Button round>
+          <IconAimSight src={iconAimSight} />
+        </Button>
+      </ContainerButtons>
+      <ContainerImgWeather>
+        <ImgWeather src={imgWeather} />
+      </ContainerImgWeather>
+      <WeatherInfoAside>
+        <Degress>
+          15<DegressType><span>°</span>c</DegressType>
+        </Degress>
+        <Weather>Shower</Weather>
+        <Date>Today • Fri, 5 Jun</Date>
+        <Location>
+          <img src={iconPin} alt="Location pin" /> <span>Helsinki</span>
+        </Location>
+      </WeatherInfoAside>
     </ContainerAside>
   );
 }
+

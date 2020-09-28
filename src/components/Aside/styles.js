@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 import backgroundCloud from 'assets/img/cloud-background.png';
 
-export const ContainerAsideInfo = styled.div`
+export const ContainerAside = styled.aside`
+  background-color: #1E213A;
   padding: 25px 0 10px 0;
   min-width: 320px;
+  color: #E7E7EB;
 `;
 
 export const ContainerButtons = styled.div`
