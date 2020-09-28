@@ -4,6 +4,7 @@ import Button from 'components/Button';
 
 import WeatherDays from './components/WeatherDays';
 import WeatherInfo from './components/WeatherInfo';
+import Footer from './components/Footer';
 
 const ContainerWeather = styled.div`
   flex: 1;
@@ -44,6 +45,7 @@ export default function Main() {
       </ContainerButtons>
       <WeatherDays />
       <WeatherInfo />
+      <Footer />
     </ContainerWeather>
   );
 }
