@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const Container = styled.footer`
   text-align: center;
   color: #E7E7EB;
   margin: 20px auto 0 auto;

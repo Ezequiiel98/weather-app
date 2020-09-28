@@ -7,3 +7,30 @@ body {
   font-family: 'Raleway', sans-serif;  
 }
 
+body::-webkit-scrollbar {
+  -webkit-appearance: none;
+  background-color: #100E2D;
+}
+
+body::-webkit-scrollbar-button:increment,
+body::-webkit-scrollbar-button {
+  display: none;
+} 
+  
+body::-webkit-scrollbar-thumb {
+  background-color: #1E216A;
+  border: 2px solid #1E216A;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+  
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
