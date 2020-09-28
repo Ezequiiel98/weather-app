@@ -1,11 +1,15 @@
 import styled from '@emotion/styled';
 
-export const ContainerAsideSearch = styled.div`
-  padding: 10px;
-
-  @media (min-width: 480px) {
-    padding: 10px 35px;
-  }
+export const ContainerSearch = styled.div`
+  position: fixed; 
+  background-color: #1E213A;
+  color: #E7E7EB;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 10px 20px;
+  min-width: 300px;
 `;
 
 export const ButtonClose = styled.button`
@@ -27,14 +31,10 @@ export const ButtonClose = styled.button`
 export const InputGroup = styled.div`
   display: flex;
   max-width: 280px;
-  margin: 20px auto 0 auto;
+  margin-top: 20px;
   
   &>button {
     padding: 9px 12px;
-  }
-
-  @media (min-width: 768px) {
-    max-width: 100%;  
   }
 `;
 
@@ -74,8 +74,7 @@ export const ButtonPlace = styled.button`
   background-color: transparent;
   color: #E7E7EB;
   padding: 15px 10px;
-  width: 250px;
-  max-width: 250px; 
+  min-width: 280px;
   font-size: 16px;
   font-weight: 500px;
   border: 1px solid transparent; 

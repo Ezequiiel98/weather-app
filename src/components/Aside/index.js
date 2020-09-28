@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import AsideInfo from './components/AsideInfo';
-import AsideSearch from './components/AsideSearch';
 
 const ContainerAside = styled.aside`
   background-color: #1E213A;

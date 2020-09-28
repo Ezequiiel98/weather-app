@@ -5,7 +5,7 @@ import iconArrowRight from 'assets/icons/arrow-right.svg';
 import Button from 'components/Button';
 
 import {
-  ContainerAsideSearch,
+  ContainerSearch,
   ButtonClose,
   InputGroup,
   ContainerInput,
@@ -16,9 +16,9 @@ import {
   IconArrowRight
 } from './styles';
 
-export default function AsideSearch() {
+export default function Search() {
   return (
-    <ContainerAsideSearch>
+    <ContainerSearch>
       <ButtonClose>
         <img src={iconClose} alt="icon close" />
       </ButtonClose>
@@ -44,6 +44,6 @@ export default function AsideSearch() {
           <IconArrowRight src={iconArrowRight} />
         </ButtonPlace>
       </ContainerPlaces>
-    </ContainerAsideSearch>
+    </ContainerSearch>
   );
 }

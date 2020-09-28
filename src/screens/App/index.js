@@ -1,5 +1,6 @@
 import React from 'react';
 import Aside from 'components/Aside';
+import Search from 'components/Search';
 import Main from 'components/Main';
 import styled from '@emotion/styled';
 
@@ -17,6 +18,7 @@ export default function App() {
   return (
     <ContainerApp>
       <Aside />
+      <Search />
       <Main />
     </ContainerApp>
   );
