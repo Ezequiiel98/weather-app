@@ -4,13 +4,13 @@ import iconPin from 'assets/icons/pin.svg';
 import imgWeather from 'assets/img/shower.png';
 import Button from 'components/Button';
 
-import { ContainerAside, 
+import { ContainerAside,
   ContainerButtons,
   IconAimSight,
   ContainerImgWeather,
-  ImgWeather, 
+  ImgWeather,
   WeatherInfoAside,
-  Degress, 
+  Degress,
   DegressType,
   Weather,
   Date,
@@ -18,7 +18,8 @@ import { ContainerAside,
 } from './styles';
 
 
-export default function Aside() {
+export default function Aside({ lat, long }) {
+  
   return (
     <ContainerAside>
       <ContainerButtons>
