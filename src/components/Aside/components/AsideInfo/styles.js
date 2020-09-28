@@ -40,7 +40,7 @@ export const ContainerImgWeather = styled.div`
     opacity: .2;
     background-image: url(${backgroundCloud});
     background-size: cover;
-    backgroun-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-position: center;
   }
 `;

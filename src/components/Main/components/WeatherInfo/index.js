@@ -1,89 +1,18 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import iconWindDirection from 'assets/icons/windDirection.svg';
 
 import ItemInfo from '../ItemInfo';
 
-const ContainerWeatherInfo = styled.div`
-  color: #E7E7EB;
-  margin-top: 50px;
-`;
-
-const Title = styled.h2`
-  font-weight: 700;
-  font-size: 27px;
-`;
-
-const ContainerInfo = styled.div`
-
-  @media (min-width: 1000px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-`;
-
-
-const ContainerPercentage = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  min-width: 80%;
-
-  & > p {
-    padding: 0;
-    margin: 8px 5px;
-  }
-
-  & > p:last-of-type {
-    margin: 8px 0 0 auto;
-  }
-`;
-
-const Percentage = styled.div`
-  position: relative;
-  background-color: #E7E7EB;
-  height: 10px;
-  width: 100%;
-  border-radius: 70px;
-`;
-
-const PercentageFill = styled.div`
-  position: absolute;
-  border-radius: 70px;
-  top: 0;
-  left: 0;
-  height: 10px;
-  width: 50%;
-  background-color: #FFEC65;
-`;
-
-const ContainerWindDirection = styled.div`
-  display: flex;
-  margin-top: 20px;
-  justify-content: space-between;
-  min-width: 90px;
-
-  & > p {
-    font-weight: 500;
-    text-transform: uppercase;
-  }
-`;
-
-const IconDirection = styled.div`
-  background-color: #6E707A;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  padding: 5px;
-  
-  & > img {
-    display: block;
-    margin: auto;
-    width: 25px;
-    height: 25px;
-  }
-`;
+import {
+  ContainerWeatherInfo,
+  Title,
+  ContainerInfo,
+  ContainerWindDirection,
+  IconDirection,
+  ContainerPercentage,
+  Percentage,
+  PercentageFill
+} from './styles';
 
 export default function WeatherInfo() {
   return (

@@ -18,7 +18,6 @@ export default function App() {
   return (
     <ContainerApp>
       <Aside />
-      <Search />
       <Main />
     </ContainerApp>
   );
