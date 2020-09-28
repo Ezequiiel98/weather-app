@@ -5,7 +5,6 @@ export const ContainerDays = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-  
   @media (min-width: 480px){
     flex-direction: row;
     justify-content: space-between;
@@ -20,7 +19,7 @@ export const CardDay = styled.div`
   padding: 15px 25px;
   margin-bottom: 22px;
   min-width: 110px;
-  max-width: 110px;
+  margin: 0 auto 22px auto;
 `;
 
 export const Day = styled.h4`

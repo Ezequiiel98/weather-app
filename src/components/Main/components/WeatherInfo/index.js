@@ -13,16 +13,19 @@ const Title = styled.h2`
 `;
 
 const ContainerInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+
+  @media (min-width: 1000px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 `;
 
 const ItemInfo = styled.div`
   background-color: #1E213A;
   min-width: 48%;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding-bottom: 25px;
   display: flex;
   flex-direction: column;
