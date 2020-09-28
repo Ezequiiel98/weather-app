@@ -21,7 +21,7 @@ export default function WeatherInfo() {
       <ContainerInfo>
         <ItemInfo title="Wind Status" boldText="7" bigText="mph">
           <ContainerWindDirection>
-            <IconDirection>
+            <IconDirection degressDirection="200">
               <img src={iconWindDirection} alt="Wind direction" />
             </IconDirection>
             <p>wsw</p>
@@ -32,7 +32,7 @@ export default function WeatherInfo() {
             <p>0</p>
             <p>100</p>
             <Percentage>
-              <PercentageFill />
+              <PercentageFill humidityPercentage="84" />
             </Percentage>
             <p>%</p>
           </ContainerPercentage>

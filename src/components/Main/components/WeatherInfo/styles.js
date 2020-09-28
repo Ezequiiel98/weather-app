@@ -50,7 +50,7 @@ export const PercentageFill = styled.div`
   top: 0;
   left: 0;
   height: 10px;
-  width: 50%;
+  width: ${props => props.humidityPercentage || 0}%;
   background-color: #FFEC65;
 `;
 
@@ -76,8 +76,9 @@ export const IconDirection = styled.div`
   & > img {
     display: block;
     margin: auto;
-    width: 25px;
-    height: 25px;
+    width: 29px;
+    height: 29px;
+    transform: rotate(${props => props.degressDirection || 0}deg);
   }
 `;
 
