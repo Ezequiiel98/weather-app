@@ -3,14 +3,14 @@ import backgroundCloud from 'assets/img/cloud-background.png';
 
 export const ContainerAsideInfo = styled.div`
   padding: 25px 0 10px 0;
-  min-width: 300px;
+  min-width: 320px;
 `;
 
 export const ContainerButtons = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 0 20px;
 `;
 
 export const IconAimSight = styled.img`
@@ -22,8 +22,8 @@ export const IconAimSight = styled.img`
 
 export const ContainerImgWeather = styled.div`
   background: transparent;
-  margin-top: 25px;
-  height: 300px;
+  margin-top: 40px;
+  height: 360px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,25 +46,25 @@ export const ContainerImgWeather = styled.div`
 `;
 
 export const ImgWeather = styled.img`
-  width: 150px;
+  width: 180px;
 `;
 
 export const WeatherInfoAside = styled.div`
   display: flex;
-  margin: 20px 0;
+  margin: 45px 0;
   flex-direction: column;
   align-items: center;
   justify-items: center;
 `;
 
 export const Degress = styled.span`
-  font-size: 108px;
+  font-size: 120px;
   font-weight: 500;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 `;
 
 export const DegressType = styled.span`
-  font-size: 45px;
+  font-size: 50px;
   line-height: 0;
   opacity: .6;
   display: inline-flex;
@@ -87,7 +87,7 @@ export const Weather = styled.h4`
 export const Date = styled.span`
   color: #A09FB1;
   font-size: 18px;
-  margin: 25px 0;
+  margin: 50px 0 30px 0;
 `;
 
 export const Location = styled.div`
