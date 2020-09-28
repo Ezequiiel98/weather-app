@@ -1,9 +1,16 @@
 import React from 'react';
+import Aside from 'components/Aside';
+import Search from 'components/Search';
+import Main from 'components/Main';
 
-import styles from './index.module.css';
+import { ContainerApp } from './styles';
 
-function App() {
-  return <h1> Proyecto weather-app </h1>;
+export default function App() {
+  return (
+    <ContainerApp>
+      <Aside />
+      <Main />
+    </ContainerApp>
+  );
 }
 
-export default App;
