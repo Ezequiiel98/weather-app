@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import iconWindDirection from 'assets/icons/windDirection.svg';
 
+import ItemInfo from '../ItemInfo';
+
 const ContainerWeatherInfo = styled.div`
   color: #E7E7EB;
   margin-top: 50px;
@@ -21,39 +23,6 @@ const ContainerInfo = styled.div`
   }
 `;
 
-const ItemInfo = styled.div`
-  background-color: #1E213A;
-  min-width: 48%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding-bottom: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const WindStatus = styled(ItemInfo)``;
-const Humidity = styled(ItemInfo)``;
-const Visibility = styled(ItemInfo)``;
-const AirPressure = styled(ItemInfo)``;
-
-const TitleInfo = styled.h3`
-  color: #E7E7EB;
-  padding: 0;
-  margin: 22px 0 10px 0;
-  text-align: center;
-  font-weight: 500;
-  font-size: 20px;
-`;
-
-const BigText = styled.span`
-  font-size: 45px;
-`;
-
-const BoldText = styled.span`
-  font-weight: bold;
-  font-size: 75px;
-`;
 
 const ContainerPercentage = styled.div`
   display: flex;
@@ -119,27 +88,17 @@ const IconDirection = styled.div`
 export default function WeatherInfo() {
   return (
     <ContainerWeatherInfo>
-      <Title>Todays's Hightlights</Title>
+      <Title>Todays&apos;s Hightlights</Title>
       <ContainerInfo>
-        <WindStatus>
-          <TitleInfo>Wind Status</TitleInfo>
-          <div>
-            <BoldText>7</BoldText>
-            <BigText>mph</BigText>
-          </div>
+        <ItemInfo title="Wind Status" boldText="7" bigText="mph">
           <ContainerWindDirection>
             <IconDirection>
               <img src={iconWindDirection} alt="Wind direction" />
             </IconDirection>
             <p>wsw</p>
           </ContainerWindDirection>
-        </WindStatus>
-        <Humidity>
-          <TitleInfo>Humidity</TitleInfo>
-          <div>
-            <BoldText>84</BoldText>
-            <BigText>%</BigText>
-          </div>
+        </ItemInfo>
+        <ItemInfo title="Humidity" boldText="84" bigText="%">
           <ContainerPercentage>
             <p>0</p>
             <p>100</p>
@@ -148,21 +107,9 @@ export default function WeatherInfo() {
             </Percentage>
             <p>%</p>
           </ContainerPercentage>
-        </Humidity>
-        <Visibility>
-          <TitleInfo>Visibility</TitleInfo>
-          <div>
-            <BoldText>6,4</BoldText>
-            <BigText>&nbsp;miles</BigText>
-          </div>
-        </Visibility>
-        <AirPressure>
-          <TitleInfo>Air Pressure</TitleInfo>
-          <div>
-            <BoldText>998</BoldText>
-            <BigText>&nbsp;mb</BigText>
-          </div>
-        </AirPressure>
+        </ItemInfo>
+        <ItemInfo title="Visibility" boldText="6,4" bigText="&nbsp;miles" />
+        <ItemInfo title="Air Pressure" boldText="998" bigText="&nbsp;mb" />
       </ContainerInfo>
     </ContainerWeatherInfo>
   );
