@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useGeolocationLatLong() {
+export default function useGeolocationLatLong(get) {
   const [latLong, setLatLong] = useState({});
   const [error, setError] = useState(null);
 
@@ -14,12 +14,12 @@ export default function useGeolocationLatLong() {
   useEffect(() => {
     const getLocation = () => navigator.geolocation.getCurrentPosition(position => handleChange(position), () => handleError());
 
-    if ('geolocation' in navigator) {
+    if ('geolocation' in navigator && get) {
       getLocation();
       setError(false);
     } else {
       setError(true);
     }
-  }, []);
+  }, [get]);
   return { latLong, error };
 }

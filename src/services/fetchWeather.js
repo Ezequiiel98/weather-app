@@ -1,3 +1,4 @@
 import api from './api';
 
-export const getWeather = weoid => api.get(`/${weoid}`);
+// woeid = Where On Earth ID
+export const fetchWeather = woeid => api.get(`/${woeid}`);
