@@ -17,8 +17,8 @@ export default function ItemInfo({ title, boldText, bigText, children }) {
 }
 
 ItemInfo.propTypes = {
-  bigText: PropTypes.string.isRequired,
-  boldText: PropTypes.string.isRequired,
+  bigText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  boldText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.node
 };

@@ -24,7 +24,13 @@ export default function Main() {
       { Object.keys(dataDaysWeather).length >= 1
           ? <>
             <WeatherDays dataDaysWeather={dataDaysWeather} />
-            <WeatherInfo dataWeatherToday={dataDaysWeather[0]} />
+            <WeatherInfo
+              airPressure={dataDaysWeather[0].air_pressure}
+              windDirection={dataDaysWeather[0].wind_direction}
+              windSpeed={dataDaysWeather[0].wind_speed}
+              windCompass={dataDaysWeather[0].wind_direction_compass}
+              {...dataDaysWeather[0]}
+            />
             </>
        : <p> loading</p>
       }
