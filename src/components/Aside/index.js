@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import iconAimSight from 'assets/icons/aimSight.svg';
 import iconPin from 'assets/icons/pin.svg';
 import imgWeather from 'assets/img/shower.png';
@@ -6,6 +6,7 @@ import Button from 'components/Button';
 import { fetchLocationByLatLong } from 'services/fetchLocation';
 import { fetchWeather } from 'services/fetchWeather';
 import useGeolocationLatLong from 'hooks/useGeolocationLatLong';
+import WeatherContext from 'contexts/weatherContext';
 
 import { DAY_NUM, DAY_NAME, MONTH_NAME } from '../../constants/date';
 
@@ -30,10 +31,11 @@ const LAT_LONG_BS_AS = {
 
 export default function Aside() {
   const [dataLocation, setDataLocation] = useState({});
-  const [dataWeather, setDataWeather] = useState({});
+  const [{ dataDaysWeather, unitTemp }, setDataWeather] = useContext(WeatherContext);
   //  const [getUserLocation, setGetUserLocation] = useState(true);
-  const { latLong: { lat, long }, error } = useGeolocationLatLong(true);
-  // const { lat, long } = LAT_LONG_BS_AS;
+  const [latLong, error] = useGeolocationLatLong(true);
+
+  const { lat, long } = error ? LAT_LONG_BS_AS : latLong;
 
   useEffect(() => {
     const getDataLocation = async () => {
@@ -49,17 +51,18 @@ export default function Aside() {
   useEffect(() => {
     const getDataWeather = async () => {
       const res = await fetchWeather(dataLocation.woeid);
-      setDataWeather(res.data.consolidated_weather);
+      console.log(res.data.consolidated_weather);
+      setDataWeather({ dataDaysWeather: res.data.consolidated_weather, unitTemp });
     };
 
     if (Object.keys(dataLocation).length >= 1) {
       getDataWeather();
     }
-  }, [dataLocation]);
+  }, [dataLocation, setDataWeather]);
 
   return (
     <ContainerAside>
-      { Object.keys(dataWeather).length >= 1 ? (
+      { Object.keys(dataDaysWeather).length >= 1 ? (
         <>
           <ContainerButtons>
             <Button>
@@ -74,9 +77,9 @@ export default function Aside() {
           </ContainerImgWeather>
           <WeatherInfoAside>
             <Degress>
-              {Math.floor(dataWeather[0].the_temp)}<DegressType><span>°</span>c</DegressType>
+              {Math.floor(dataDaysWeather[0].the_temp)}<DegressType><span>°</span>c</DegressType>
             </Degress>
-            <Weather>{dataWeather[0].weather_state_name}</Weather>
+            <Weather>{dataDaysWeather[0].weather_state_name}</Weather>
             <Date>Today • {DAY_NAME}, {DAY_NUM} {MONTH_NAME}</Date>
             <Location>
               <img src={iconPin} alt="Location pin" /> <span>{dataLocation.title}</span>

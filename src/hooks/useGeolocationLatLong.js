@@ -21,5 +21,6 @@ export default function useGeolocationLatLong(get) {
       setError(true);
     }
   }, [get]);
-  return { latLong, error };
+
+  return [latLong, error];
 }
