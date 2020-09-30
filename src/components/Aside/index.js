@@ -84,7 +84,7 @@ export default function Aside() {
                 {Math.floor(dataDaysWeather[0].the_temp)}<DegressType><span>°</span>c</DegressType>
               </Degress>
               <Weather>{dataDaysWeather[0].weather_state_name}</Weather>
-              <Date>Today • {getDate(dataDaysWeather[0].applicable_date)}</Date>
+              <Date>Today • {getDate(dataDaysWeather[0].created)}</Date>
               <Location>
                 <img src={iconPin} alt="Location pin" /> <span>{dataLocation.title}</span>
               </Location>
