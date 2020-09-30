@@ -27,6 +27,10 @@ export const Day = styled.h4`
   margin: 0 0 20px 0; 
   text-align: center;
   padding: 0;
+  color: #E7E7EB;
+  font-weight: 500;
+  font-size: 17px;
+
 `;
 
 export const ImgWeather = styled.img`

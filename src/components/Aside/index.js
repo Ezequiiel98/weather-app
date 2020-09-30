@@ -7,8 +7,8 @@ import { fetchLocationByLatLong } from 'services/fetchLocation';
 import { fetchWeather } from 'services/fetchWeather';
 import useGeolocationLatLong from 'hooks/useGeolocationLatLong';
 import WeatherContext from 'contexts/weatherContext';
+import getDate from 'helpers/getDate';
 
-import { DAY_NUM, DAY_NAME, MONTH_NAME } from '../../constants/date';
 import IMG_WEATHER from '../../constants/imgWeather';
 
 import { ContainerAside,
@@ -84,14 +84,14 @@ export default function Aside() {
                 {Math.floor(dataDaysWeather[0].the_temp)}<DegressType><span>°</span>c</DegressType>
               </Degress>
               <Weather>{dataDaysWeather[0].weather_state_name}</Weather>
-              <Date>Today • {DAY_NAME}, {DAY_NUM} {MONTH_NAME}</Date>
+              <Date>Today • {getDate(dataDaysWeather[0].applicable_date)}</Date>
               <Location>
                 <img src={iconPin} alt="Location pin" /> <span>{dataLocation.title}</span>
               </Location>
             </WeatherInfoAside>
           </>
     )
-          : <p>cargandoo.</p>
+          : <p>loading...</p>
       }
       </ContainerAside>
       { showSearch && <Search /> }
