@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 import iconAimSight from 'assets/icons/aimSight.svg';
 import iconPin from 'assets/icons/pin.svg';
-import imgWeather from 'assets/img/shower.png';
 import Button from 'components/Button';
+import Search from 'components/Search';
 import { fetchLocationByLatLong } from 'services/fetchLocation';
 import { fetchWeather } from 'services/fetchWeather';
 import useGeolocationLatLong from 'hooks/useGeolocationLatLong';
 import WeatherContext from 'contexts/weatherContext';
 
 import { DAY_NUM, DAY_NAME, MONTH_NAME } from '../../constants/date';
+import IMG_WEATHER from '../../constants/imgWeather';
 
 import { ContainerAside,
   ContainerButtons,
@@ -28,6 +29,8 @@ const LAT_LONG_BS_AS = {
   lat: 36.96,
   long: -122.02
 };
+
+const showSearch = false;
 
 export default function Aside() {
   const [dataLocation, setDataLocation] = useState({});
@@ -58,38 +61,41 @@ export default function Aside() {
     if (Object.keys(dataLocation).length >= 1) {
       getDataWeather();
     }
-  }, [dataLocation, setDataWeather]);
+  }, [dataLocation, unitTemp, setDataWeather]);
 
   return (
-    <ContainerAside>
-      { Object.keys(dataDaysWeather).length >= 1 ? (
-        <>
-          <ContainerButtons>
-            <Button>
-              Search for places
-            </Button>
-            <Button round>
-              <IconAimSight src={iconAimSight} />
-            </Button>
-          </ContainerButtons>
-          <ContainerImgWeather>
-            <ImgWeather src={imgWeather} />
-          </ContainerImgWeather>
-          <WeatherInfoAside>
-            <Degress>
-              {Math.floor(dataDaysWeather[0].the_temp)}<DegressType><span>°</span>c</DegressType>
-            </Degress>
-            <Weather>{dataDaysWeather[0].weather_state_name}</Weather>
-            <Date>Today • {DAY_NAME}, {DAY_NUM} {MONTH_NAME}</Date>
-            <Location>
-              <img src={iconPin} alt="Location pin" /> <span>{dataLocation.title}</span>
-            </Location>
-          </WeatherInfoAside>
-        </>
+    <>
+      <ContainerAside>
+        { Object.keys(dataDaysWeather).length >= 1 ? (
+          <>
+            <ContainerButtons>
+              <Button>
+                Search for places
+              </Button>
+              <Button round>
+                <IconAimSight src={iconAimSight} />
+              </Button>
+            </ContainerButtons>
+            <ContainerImgWeather>
+              <ImgWeather src={IMG_WEATHER[dataDaysWeather[0].weather_state_abbr]} alt={dataDaysWeather[0].weather_state_name} />
+            </ContainerImgWeather>
+            <WeatherInfoAside>
+              <Degress>
+                {Math.floor(dataDaysWeather[0].the_temp)}<DegressType><span>°</span>c</DegressType>
+              </Degress>
+              <Weather>{dataDaysWeather[0].weather_state_name}</Weather>
+              <Date>Today • {DAY_NAME}, {DAY_NUM} {MONTH_NAME}</Date>
+              <Location>
+                <img src={iconPin} alt="Location pin" /> <span>{dataLocation.title}</span>
+              </Location>
+            </WeatherInfoAside>
+          </>
     )
           : <p>cargandoo.</p>
       }
-    </ContainerAside>
+      </ContainerAside>
+      { showSearch && <Search /> }
+    </>
   );
 }
 

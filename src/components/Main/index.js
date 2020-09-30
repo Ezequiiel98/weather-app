@@ -21,8 +21,13 @@ export default function Main() {
           °F
         </Button>
       </ContainerButtons>
-      <WeatherDays />
-      <WeatherInfo />
+      { Object.keys(dataDaysWeather).length >= 1
+          ? <>
+            <WeatherDays dataDaysWeather={dataDaysWeather} />
+            <WeatherInfo dataWeatherToday={dataDaysWeather[0]} />
+            </>
+       : <p> loading</p>
+      }
       <Footer />
     </ContainerWeather>
   );

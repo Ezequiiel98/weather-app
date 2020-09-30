@@ -5,6 +5,7 @@ export const ContainerDays = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
+
   @media (min-width: 480px){
     flex-direction: row;
     justify-content: space-between;
