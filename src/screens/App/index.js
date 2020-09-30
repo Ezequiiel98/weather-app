@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Aside from 'components/Aside';
-import Search from 'components/Search';
 import Main from 'components/Main';
 import WeatherProvider from 'contexts/providers/weatherProvider';
 

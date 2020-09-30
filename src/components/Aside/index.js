@@ -8,6 +8,7 @@ import { fetchWeather } from 'services/fetchWeather';
 import useGeolocationLatLong from 'hooks/useGeolocationLatLong';
 import WeatherContext from 'contexts/weatherContext';
 import getDate from 'helpers/getDate';
+import convertDegressTemp from 'helpers/convertDegressTemp';
 
 import IMG_WEATHER from '../../constants/imgWeather';
 
@@ -43,6 +44,7 @@ export default function Aside() {
   useEffect(() => {
     const getDataLocation = async () => {
       const res = await fetchLocationByLatLong({ lat, long });
+      console.log('1', res);
       setDataLocation(res.data[0]);
     };
 
@@ -54,7 +56,7 @@ export default function Aside() {
   useEffect(() => {
     const getDataWeather = async () => {
       const res = await fetchWeather(dataLocation.woeid);
-      console.log(res.data.consolidated_weather);
+      console.log('2', res);
       setDataWeather({ dataDaysWeather: res.data.consolidated_weather, unitTemp });
     };
 
@@ -81,7 +83,7 @@ export default function Aside() {
             </ContainerImgWeather>
             <WeatherInfoAside>
               <Degress>
-                {Math.floor(dataDaysWeather[0].the_temp)}<DegressType><span>°</span>c</DegressType>
+                {convertDegressTemp(dataDaysWeather[0].the_temp, unitTemp)}<DegressType><span>°</span>{unitTemp}</DegressType>
               </Degress>
               <Weather>{dataDaysWeather[0].weather_state_name}</Weather>
               <Date>Today • {getDate(dataDaysWeather[0].created)}</Date>

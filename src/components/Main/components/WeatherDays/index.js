@@ -1,5 +1,6 @@
 import React from 'react';
 import getDate from 'helpers/getDate';
+import convertDegressTemp from 'helpers/convertDegressTemp';
 
 import IMG_WEATHER from '../../../../constants/imgWeather';
 
@@ -16,8 +17,8 @@ export default function WeatherDays({ dataDaysWeather, unitTemp }) {
              <Day>{ index === 0 ? 'Tomorrow' : getDate(created) }</Day>
              <ImgWeather src={IMG_WEATHER[weatherAbbr]} />
              <Degress>
-               <p>{ Math.floor(maxTemp) }°c</p>
-               <DegreeMin>{ Math.floor(minTemp) }°c</DegreeMin>
+               <p>{ `${convertDegressTemp(minTemp, unitTemp)}°${unitTemp}` }</p>
+               <DegreeMin>{ `${convertDegressTemp(minTemp, unitTemp)}°${unitTemp}` }</DegreeMin>
              </Degress>
            </CardDay>
       ))}
