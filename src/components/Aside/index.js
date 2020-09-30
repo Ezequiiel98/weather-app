@@ -57,13 +57,13 @@ export default function Aside() {
     const getDataWeather = async () => {
       const res = await fetchWeather(dataLocation.woeid);
       console.log('2', res);
-      setDataWeather({ dataDaysWeather: res.data.consolidated_weather, unitTemp });
+      setDataWeather({ dataDaysWeather: res.data.consolidated_weather, unitTemp: 'c' });
     };
 
     if (Object.keys(dataLocation).length >= 1) {
       getDataWeather();
     }
-  }, [dataLocation, unitTemp, setDataWeather]);
+  }, [dataLocation, setDataWeather]);
 
   return (
     <>

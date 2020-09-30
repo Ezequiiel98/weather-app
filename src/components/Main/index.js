@@ -13,13 +13,13 @@ export default function Main() {
 
   const handleClickCelcius = () => {
     if (unitTemp === 'f') {
-       setDataWeather({ unitTemp: 'c', dataDaysWeather });
+      setDataWeather({ unitTemp: 'c', dataDaysWeather });
     }
   };
 
   const handleClickFarenheit = () => {
     if (unitTemp === 'c') {
-       setDataWeather({ unitTemp: 'f', dataDaysWeather });
+      setDataWeather({ unitTemp: 'f', dataDaysWeather });
     }
   };
 
