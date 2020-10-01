@@ -22,17 +22,25 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather 
   const [nameCountry, setNamecountry] = useState('');
   const [countriesData, setCountriesData] = useState([]);
   const [showNotResults, setShowNotResults] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = e => setNamecountry(e.target.value);
 
   const handleSubmit = async e => {
     e.preventDefault();
 
-    if (handleChange !== '') {
+    setIsLoading(true);
+    setShowNotResults(false);
+
+    if (nameCountry !== '') {
       const res = await fetchLocationByName(nameCountry);
       setCountriesData(res.data);
       setShowNotResults(res.data.length <= 0);
+    } else {
+      setShowNotResults(true);
     }
+
+    setIsLoading(false);
   };
 
   const handleClick = woeid => {
@@ -65,6 +73,8 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather 
           </ButtonPlace>
         ))}
         {showNotResults && <NotResultMessage>There weren't results :c </NotResultMessage>}
+        {/* despues remplazar esto por un loader */}
+        { isLoading && <NotResultMessage>Loading</NotResultMessage>}
       </ContainerPlaces>
     </ContainerSearch>
   );
