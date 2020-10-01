@@ -26,7 +26,7 @@ import { ContainerAside,
 } from './styles';
 
 // santacruz
-const LAT_LONG_BS_AS = {
+const LAT_LONG_SANTA_CRUZ = {
   lat: 36.96,
   long: -122.02
 };
@@ -35,22 +35,23 @@ export default function Aside() {
   const [dataLocation, setDataLocation] = useState({});
   const [showSearch, setShowSearch] = useState(false);
   const [{ dataDaysWeather, unitTemp }, setDataWeather] = useContext(WeatherContext);
-  //  const [getUserLocation, setGetUserLocation] = useState(true);
-  const [latLong, error] = useGeolocationLatLong(true);
+  const [getUserLocation, setGetUserLocation] = useState(true);
+  const [latLong, errorLocation] = useGeolocationLatLong();
 
-  const { lat, long } = error ? LAT_LONG_BS_AS : latLong;
+  const { lat, long } = errorLocation ? LAT_LONG_SANTA_CRUZ : latLong;
 
   useEffect(() => {
     const getDataLocation = async () => {
       const res = await fetchLocationByLatLong({ lat, long });
       console.log('1', res);
       setDataLocation(res.data[0]);
+      setGetUserLocation(false);
     };
 
-    if (lat && long) {
+    if (lat && long && getUserLocation) {
       getDataLocation();
     }
-  }, [lat, long]);
+  }, [lat, long, getUserLocation]);
 
   useEffect(() => {
     const getDataWeather = async () => {
@@ -64,6 +65,15 @@ export default function Aside() {
     }
   }, [dataLocation, setDataWeather]);
 
+  const handleClickUserLocation = () => {
+    if (!errorLocation) {
+      setDataWeather({ dataDaysWeather: {}, unitTemp: 'c' });
+      setGetUserLocation(true);
+    } else {
+      alert('to use it, you must enable location service');
+    }
+  };
+
   return (
     <>
       <ContainerAside>
@@ -73,7 +83,7 @@ export default function Aside() {
               <Button onClick={() => setShowSearch(true)}>
                 Search for places
               </Button>
-              <Button round>
+              <Button onClick={handleClickUserLocation} round>
                 <IconAimSight src={iconAimSight} />
               </Button>
             </ContainerButtons>
