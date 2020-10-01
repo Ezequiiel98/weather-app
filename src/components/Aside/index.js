@@ -98,6 +98,7 @@ export default function Aside() {
       { showSearch && <Search
         setDataLocation={setDataLocation}
         setShowSearch={setShowSearch}
+        setDataWeather={setDataWeather}
                       /> }
     </>
   );

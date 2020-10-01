@@ -14,12 +14,14 @@ import {
   IconSearch,
   ContainerPlaces,
   ButtonPlace,
-  IconArrowRight
+  IconArrowRight,
+  NotResultMessage
 } from './styles';
 
-export default function Search({ setShowSearch, setDataLocation }) {
+export default function Search({ setShowSearch, setDataLocation, setDataWeather }) {
   const [nameCountry, setNamecountry] = useState('');
   const [countriesData, setCountriesData] = useState([]);
+  const [showNotResults, setShowNotResults] = useState(false);
 
   const handleChange = e => setNamecountry(e.target.value);
 
@@ -29,15 +31,19 @@ export default function Search({ setShowSearch, setDataLocation }) {
     if (handleChange !== '') {
       const res = await fetchLocationByName(nameCountry);
       setCountriesData(res.data);
+      setShowNotResults(res.data.length <= 0);
     }
   };
 
   const handleClick = woeid => {
      const [locationCountry] = countriesData.filter(country => country.woeid === woeid);
 
-     setDataLocation(locationCountry);
-     setShowSearch(false);
+    setDataLocation(locationCountry);
+    // reseteo el context para que se muestren los loaders
+    setDataWeather({ dataDaysWeather: {}, unitTemp: 'c' });
+    setShowSearch(false);
   };
+
   return (
     <ContainerSearch>
       <ButtonClose onClick={() => setShowSearch(false)}>
@@ -58,6 +64,7 @@ export default function Search({ setShowSearch, setDataLocation }) {
             <IconArrowRight src={iconArrowRight} />
           </ButtonPlace>
         ))}
+        {showNotResults && <NotResultMessage>There weren't results :c </NotResultMessage>}
       </ContainerPlaces>
     </ContainerSearch>
   );

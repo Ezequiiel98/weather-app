@@ -87,6 +87,12 @@ export const ButtonPlace = styled.button`
   }
 `;
 
+export const NotResultMessage = styled.p`
+  color: #E7E7EB;
+  padding: 15px 10px;
+  text-align: center; 
+`;
+
 export const IconArrowRight = styled.img`
   width: 30px;
 `;
