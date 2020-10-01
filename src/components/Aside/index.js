@@ -31,10 +31,9 @@ const LAT_LONG_BS_AS = {
   long: -122.02
 };
 
-const showSearch = false;
-
 export default function Aside() {
   const [dataLocation, setDataLocation] = useState({});
+  const [showSearch, setShowSearch] = useState(false);
   const [{ dataDaysWeather, unitTemp }, setDataWeather] = useContext(WeatherContext);
   //  const [getUserLocation, setGetUserLocation] = useState(true);
   const [latLong, error] = useGeolocationLatLong(true);
@@ -71,7 +70,7 @@ export default function Aside() {
         { Object.keys(dataDaysWeather).length >= 1 ? (
           <>
             <ContainerButtons>
-              <Button>
+              <Button onClick={() => setShowSearch(true)}>
                 Search for places
               </Button>
               <Button round>
@@ -96,7 +95,10 @@ export default function Aside() {
           : <p>loading...</p>
       }
       </ContainerAside>
-      { showSearch && <Search /> }
+      { showSearch && <Search
+        setDataLocation={setDataLocation}
+        setShowSearch={setShowSearch}
+                      /> }
     </>
   );
 }

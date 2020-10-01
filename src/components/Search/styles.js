@@ -28,7 +28,7 @@ export const ButtonClose = styled.button`
   }
 `;
 
-export const InputGroup = styled.div`
+export const FormGroup = styled.form`
   display: flex;
   max-width: 280px;
   margin-top: 20px;

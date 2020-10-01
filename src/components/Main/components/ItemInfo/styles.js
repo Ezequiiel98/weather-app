@@ -2,9 +2,8 @@ import styled from '@emotion/styled';
 
 export const ContainerItem = styled.div`
   background-color: #1E213A;
-  min-width: 48%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  min-width: 400px;
+  margin: 20px auto;
   padding-bottom: 25px;
   display: flex;
   flex-direction: column;

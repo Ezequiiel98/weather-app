@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import iconClose from 'assets/icons/close.svg';
 import iconSearch from 'assets/icons/search.svg';
 import iconArrowRight from 'assets/icons/arrow-right.svg';
+import { fetchLocationByName } from 'services/fetchLocation';
 import Button from 'components/Button';
 
 import {
   ContainerSearch,
   ButtonClose,
-  InputGroup,
+  FormGroup,
   ContainerInput,
   Input,
   IconSearch,
@@ -16,33 +17,47 @@ import {
   IconArrowRight
 } from './styles';
 
-export default function Search() {
+export default function Search({ setShowSearch, setDataLocation }) {
+  const [nameCountry, setNamecountry] = useState('');
+  const [countriesData, setCountriesData] = useState([]);
+
+  const handleChange = e => setNamecountry(e.target.value);
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if (handleChange !== '') {
+      const res = await fetchLocationByName(nameCountry);
+      setCountriesData(res.data);
+    }
+  };
+
+  const handleClick = woeid => {
+     const [locationCountry] = countriesData.filter(country => country.woeid === woeid);
+
+     setDataLocation(locationCountry);
+     setShowSearch(false);
+  };
   return (
     <ContainerSearch>
-      <ButtonClose>
+      <ButtonClose onClick={() => setShowSearch(false)}>
         <img src={iconClose} alt="icon close" />
       </ButtonClose>
-      <InputGroup>
+      <FormGroup onSubmit={handleSubmit}>
         <ContainerInput>
-          <Input type="text" placeholder="Search location" />
+          <Input type="text" placeholder="Search location" onChange={handleChange} />
           <IconSearch src={iconSearch} alt="Magnifying glass" />
         </ContainerInput>
-        <Button blue>Search</Button>
-      </InputGroup>
+        <Button blue type="submit">Search</Button>
+      </FormGroup>
 
       <ContainerPlaces>
-        <ButtonPlace type="button">
-          Buenos Aires
-          <IconArrowRight src={iconArrowRight} />
-        </ButtonPlace>
-        <ButtonPlace type="button">
-          London
-          <IconArrowRight src={iconArrowRight} />
-        </ButtonPlace>
-        <ButtonPlace type="button">
-          Madrid
-          <IconArrowRight src={iconArrowRight} />
-        </ButtonPlace>
+        {countriesData.map(({ title, woeid }) => (
+          <ButtonPlace key={woeid} onClick={() => handleClick(woeid)} type="button">
+            {title}
+            <IconArrowRight src={iconArrowRight} />
+          </ButtonPlace>
+        ))}
       </ContainerPlaces>
     </ContainerSearch>
   );

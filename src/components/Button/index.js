@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { ButtonStyle } from './styles';
 
-export default function Button({ round, light, blue, onClick, children }) {
+export default function Button({ round, light, blue, onClick, children, ...props }) {
   return (
-    <ButtonStyle type="button" light={light} round={round} blue={blue} onClick={onClick}>
+    <ButtonStyle type="button" light={light} round={round} blue={blue} onClick={onClick} {...props}>
       { children }
     </ButtonStyle>
   );
