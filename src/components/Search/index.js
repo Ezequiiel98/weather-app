@@ -33,6 +33,7 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather 
     setShowNotResults(false);
 
     if (nameCountry !== '') {
+      setCountriesData([]);
       const res = await fetchLocationByName(nameCountry);
       setCountriesData(res.data);
       setShowNotResults(res.data.length <= 0);

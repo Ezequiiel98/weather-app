@@ -2,12 +2,16 @@ import styled from '@emotion/styled';
 
 export const ContainerItem = styled.div`
   background-color: #1E213A;
-  min-width: 400px;
   margin: 20px auto;
-  padding-bottom: 25px;
+  padding: 5px 15px 25px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 90%;
+
+  @media (min-width: 1150px) {
+    min-width: 45%; 
+  }
 `;
 
 export const TitleInfo = styled.h3`
@@ -20,11 +24,19 @@ export const TitleInfo = styled.h3`
 `;
 
 export const BigText = styled.span`
-  font-size: 45px;
+  font-size: 35px;
+  
+  @media (min-width: 480px) {
+    font-size: 45px;
+  }
 `;
 
 export const BoldText = styled.span`
   font-weight: bold;
-  font-size: 75px;
+  font-size: 60px;
+    
+  @media (min-width: 480px) {
+    font-size: 75px;
+  }
 `;
 
