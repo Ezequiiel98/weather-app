@@ -4,6 +4,7 @@ import iconSearch from 'assets/icons/search.svg';
 import iconArrowRight from 'assets/icons/arrow-right.svg';
 import { fetchLocationByName } from 'services/fetchLocation';
 import Button from 'components/Button';
+import Loader from 'components/Loader';
 
 import {
   ContainerSearch,
@@ -74,8 +75,7 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather 
           </ButtonPlace>
         ))}
         {showNotResults && <NotResultMessage>There weren't results :c </NotResultMessage>}
-        {/* despues remplazar esto por un loader */}
-        { isLoading && <NotResultMessage>Loading</NotResultMessage>}
+        { isLoading && <Loader dot />}
       </ContainerPlaces>
     </ContainerSearch>
   );

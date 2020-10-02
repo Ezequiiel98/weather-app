@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Button from 'components/Button';
+import Loader from 'components/Loader';
 import WeatherContext from 'contexts/weatherContext';
 
 import WeatherDays from './components/WeatherDays';
@@ -43,8 +44,8 @@ export default function Main() {
               windCompass={dataDaysWeather[0].wind_direction_compass}
               {...dataDaysWeather[0]}
             />
-            </>
-       : <p> loading</p>
+          </>
+          : <Loader /> 
       }
       <Footer />
     </ContainerWeather>

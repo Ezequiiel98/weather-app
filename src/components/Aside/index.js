@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import iconAimSight from 'assets/icons/aimSight.svg';
 import iconPin from 'assets/icons/pin.svg';
 import Button from 'components/Button';
+import Loader from 'components/Loader';
 import Search from 'components/Search';
 import { fetchLocationByLatLong } from 'services/fetchLocation';
 import { fetchWeather } from 'services/fetchWeather';
@@ -102,7 +103,7 @@ export default function Aside() {
             </WeatherInfoAside>
           </>
     )
-          : <p>loading...</p>
+            : <Loader />
       }
       </ContainerAside>
       { showSearch && <Search
