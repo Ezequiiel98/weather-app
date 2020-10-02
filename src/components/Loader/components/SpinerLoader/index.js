@@ -28,7 +28,6 @@ const Spiner = styled.div`
   border-top: 4px solid #009688;
   border-right: 4px solid transparent;
   border-radius: 50%;
-  -webkit-animation: 1s spin linear infinite;
   animation: 1s ${Spin} linear infinite;
 `;
 

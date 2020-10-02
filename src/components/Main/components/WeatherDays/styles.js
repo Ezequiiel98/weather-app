@@ -2,15 +2,9 @@ import styled from '@emotion/styled';
 
 export const ContainerDays = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 40px;
-
-  @media (min-width: 480px){
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
+  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 export const CardDay = styled.div`
@@ -19,7 +13,7 @@ export const CardDay = styled.div`
   font-size: 16px;
   padding: 15px 25px;
   margin-bottom: 22px;
-  min-width: 110px;
+  min-width: 113px;
   margin: 0 auto 22px auto;
 `;
 

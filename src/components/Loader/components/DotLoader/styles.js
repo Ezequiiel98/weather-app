@@ -25,7 +25,6 @@ export const Dot = styled.div`
   width: 16px;
   border-radius: 50%;
   background-color:  #009688;
-  -webkit-animation: 1.2s grow ease-in-out infinite ${props => props.delay || ''};
   animation: 1.2s ${Grow} ease-in-out infinite ${props => props.delay || ''};
   margin: ${props => props.margin || '0'};
 `;

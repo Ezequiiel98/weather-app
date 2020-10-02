@@ -106,11 +106,15 @@ export default function Aside() {
             : <Loader />
       }
       </ContainerAside>
-      { showSearch && <Search
-        setDataLocation={setDataLocation}
-        setShowSearch={setShowSearch}
-        setDataWeather={setDataWeather}
-                      /> }
+      { 
+        showSearch && 
+        <Search
+          setDataLocation={setDataLocation}
+          setShowSearch={setShowSearch}
+          setDataWeather={setDataWeather}
+          showSearch={showSearch}
+        />
+      }
     </>
   );
 }

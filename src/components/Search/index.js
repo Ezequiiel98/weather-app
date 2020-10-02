@@ -19,11 +19,12 @@ import {
   NotResultMessage
 } from './styles';
 
-export default function Search({ setShowSearch, setDataLocation, setDataWeather }) {
+export default function Search({ setShowSearch, setDataLocation, setDataWeather, showSearch }) {
   const [nameCountry, setNamecountry] = useState('');
   const [countriesData, setCountriesData] = useState([]);
   const [showNotResults, setShowNotResults] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [closeSearch, setCloseSearch] = useState(false);
 
   const handleChange = e => setNamecountry(e.target.value);
 
@@ -54,9 +55,16 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather 
     setShowSearch(false);
   };
 
+  const handleCloseSearch = () => {
+    setCloseSearch(true);
+    setTimeout(() => {
+      setShowSearch(false);
+    }, 550);
+  };
+
   return (
-    <ContainerSearch>
-      <ButtonClose onClick={() => setShowSearch(false)}>
+    <ContainerSearch close={closeSearch}>
+      <ButtonClose onClick={handleCloseSearch}>
         <img src={iconClose} alt="icon close" />
       </ButtonClose>
       <FormGroup onSubmit={handleSubmit}>
