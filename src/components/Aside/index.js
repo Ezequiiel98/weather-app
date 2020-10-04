@@ -27,7 +27,6 @@ export default function Aside() {
   useEffect(() => {
     const getDataLocation = async () => {
       const res = await fetchLocationByLatLong({ lat, long });
-      console.log('1', res);
       setDataLocation(res.data[0]);
       setGetUserLocation(false);
     };
@@ -40,7 +39,6 @@ export default function Aside() {
   useEffect(() => {
     const getDataWeather = async () => {
       const res = await fetchWeather(dataLocation.woeid);
-      console.log('2', res);
       setDataWeather({ dataDaysWeather: res.data.consolidated_weather, unitTemp: 'c' });
     };
 
