@@ -15,5 +15,6 @@ Button.propTypes = {
   blue: PropTypes.bool,
   children: PropTypes.node,
   light: PropTypes.bool,
-  round: PropTypes.bool
+  round: PropTypes.bool,
+  onClick: PropTypes.func
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import iconClose from 'assets/icons/close.svg';
 import iconSearch from 'assets/icons/search.svg';
 import iconArrowRight from 'assets/icons/arrow-right.svg';
@@ -82,9 +83,16 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather,
             <IconArrowRight src={iconArrowRight} />
           </ButtonPlace>
         ))}
-        {showNotResults && <NotResultMessage>There weren't results :c </NotResultMessage>}
+        {showNotResults && <NotResultMessage>There weren&apos;t results :c </NotResultMessage>}
         { isLoading && <Loader dot />}
       </ContainerPlaces>
     </ContainerSearch>
   );
 }
+
+Search.propTypes = {
+  setDataLocation: PropTypes.func.isRequired,
+  setDataWeather: PropTypes.func.isRequired,
+  setShowSearch: PropTypes.func.isRequired,
+  showSearch: PropTypes.bool.isRequired
+};

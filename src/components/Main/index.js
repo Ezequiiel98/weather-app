@@ -10,7 +10,6 @@ import { ContainerWeather, ContainerButtons } from './styles';
 
 export default function Main() {
   const [{ unitTemp, dataDaysWeather }, setDataWeather] = useContext(WeatherContext);
-  console.log(dataDaysWeather);
 
   const handleClickCelcius = () => {
     if (unitTemp === 'f') {

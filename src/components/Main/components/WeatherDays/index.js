@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import getDate from 'helpers/getDate';
 import convertDegressTemp from 'helpers/convertDegressTemp';
 
@@ -25,3 +26,8 @@ export default function WeatherDays({ dataDaysWeather, unitTemp }) {
     </ContainerDays>
   );
 }
+
+WeatherDays.propTypes = {
+  dataDaysWeather: PropTypes.instanceOf(Object),
+  unitTemp: PropTypes.string
+};
