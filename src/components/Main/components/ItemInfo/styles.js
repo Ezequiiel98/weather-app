@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const ContainerItem = styled.div`
   background-color: #1E213A;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 5px 12px 25px 12px;
   display: flex;
   flex-direction: column;
