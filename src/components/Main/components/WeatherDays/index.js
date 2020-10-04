@@ -1,47 +1,33 @@
 import React from 'react';
-import thunderstrom from 'assets/img/Thunderstorm.png';
-import hail from 'assets/img/Hail.png';
-import heavyRain from 'assets/img/HeavyRain.png';
-import shower from 'assets/img/shower.png';
-import clear from 'assets/img/Clear.png';
+import PropTypes from 'prop-types';
+import getDate from 'helpers/getDate';
+import convertDegressTemp from 'helpers/convertDegressTemp';
+
+import IMG_WEATHER from '../../../../constants/imgWeather';
 
 import { ContainerDays, CardDay, Day, ImgWeather, Degress, DegreeMin } from './styles';
 
-const URL_IMGS = [
-  { id: 0,
-    src: thunderstrom
-  },
-  {
-    id: 1,
-    src: hail
-  },
-  {
-    id: 2,
-    src: heavyRain
-  },
-  {
-    id: 3,
-    src: shower
-  },
-  {
-    id: 4,
-    src: clear
-  }
-];
 
-export default function WeatherDays() {
+export default function WeatherDays({ dataDaysWeather, unitTemp }) {
   return (
     <ContainerDays>
-      {URL_IMGS.map(({ id, src }) => (
-        <CardDay key={id}>
-          <Day>Tomorrow</Day>
-          <ImgWeather src={src} />
-          <Degress>
-            <p>16°C</p>
-            <DegreeMin>11°c</DegreeMin>
-          </Degress>
-        </CardDay>
+      {dataDaysWeather
+         .filter((item, index) => index !== 0) // borro el primer item del array porque es clima de hoy
+         .map(({ min_temp: minTemp, max_temp: maxTemp, weather_state_abbr: weatherAbbr, applicable_date: dayDate, id }, index) => (
+           <CardDay key={id}>
+             <Day>{ index === 0 ? 'Tomorrow' : getDate(dayDate.replace(/-/g, '/')) }</Day>
+             <ImgWeather src={IMG_WEATHER[weatherAbbr]} />
+             <Degress>
+               <p>{ `${convertDegressTemp(maxTemp, unitTemp)}°${unitTemp}` }</p>
+               <DegreeMin>{ `${convertDegressTemp(minTemp, unitTemp)}°${unitTemp}` }</DegreeMin>
+             </Degress>
+           </CardDay>
       ))}
     </ContainerDays>
   );
 }
+
+WeatherDays.propTypes = {
+  dataDaysWeather: PropTypes.instanceOf(Object),
+  unitTemp: PropTypes.string
+};

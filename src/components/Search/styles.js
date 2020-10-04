@@ -1,4 +1,25 @@
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/core';
+
+const OpenSearch = keyframes`
+  from {
+    transform: translateX(-300px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+`;
+
+const CloseSearch = keyframes`
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-330px);
+  }
+`;
 
 export const ContainerSearch = styled.div`
   position: fixed; 
@@ -10,6 +31,8 @@ export const ContainerSearch = styled.div`
   z-index: 2;
   padding: 10px 20px;
   min-width: 300px;
+  animation: 0.48s ${props => props.close ? CloseSearch : OpenSearch} ease;
+  animation-fill-mode: forwards;
 `;
 
 export const ButtonClose = styled.button`
@@ -28,7 +51,7 @@ export const ButtonClose = styled.button`
   }
 `;
 
-export const InputGroup = styled.div`
+export const FormGroup = styled.form`
   display: flex;
   max-width: 280px;
   margin-top: 20px;
@@ -85,6 +108,12 @@ export const ButtonPlace = styled.button`
     border-color: #616475;
     cursor: pointer;
   }
+`;
+
+export const NotResultMessage = styled.p`
+  color: #E7E7EB;
+  padding: 15px 10px;
+  text-align: center; 
 `;
 
 export const IconArrowRight = styled.img`

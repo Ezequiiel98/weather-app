@@ -4,7 +4,8 @@ export const ContainerWeather = styled.main`
   flex: 1;
   padding: 15px 20px;
   background-color: #100E1D;
-
+  max-width: 1500px;  
+  
   @media (min-width: 768px) {
     padding: 15px 90px;
   }

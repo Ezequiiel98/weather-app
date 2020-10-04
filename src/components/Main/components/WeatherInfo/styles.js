@@ -11,9 +11,12 @@ export const Title = styled.h2`
 `;
 
 export const ContainerInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media (min-width: 1000px) {
-    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
   }
