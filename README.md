@@ -25,9 +25,8 @@
 
 ### Built With
 
-- [React](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
+- [ReactJS](https://reactjs.org/)
+- [Emotion Styled-component](https://emotion.sh/)
 
 ## How To Use
 
@@ -45,8 +44,4 @@ $ npm install
 # Run the app
 $ npm start
 ```
-
-## Acknowledgements
-- [ReactJS](https://reactjs.org/)
-- [Emotion Styled-component](https://emotion.sh/)
 
