@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import iconAimSight from 'assets/icons/aimSight.svg';
 import iconPin from 'assets/icons/pin.svg';
 import Button from 'components/Button';
@@ -7,6 +8,7 @@ import getDate from 'helpers/getDate';
 import convertDegressTemp from 'helpers/convertDegressTemp';
 
 import IMG_WEATHER from '../../../../constants/imgWeather';
+import WEATHER_ICO from '../../../../constants/weatherIco';
 
 import {
   ContainerButtons,
@@ -23,7 +25,10 @@ import {
 
 export default function AsideDayWeatherInfo({ onClickUserLocation, onClickShowSearch, dataDay, locationName, unitTemp }) {
   return (
-    <>
+    <HelmetProvider>
+      <Helmet>
+        <link rel="icon" href={WEATHER_ICO[dataDay.weather_state_abbr]} />
+      </Helmet>
       <ContainerButtons>
         <Button onClick={() => onClickShowSearch(true)}>
           Search for places
@@ -45,7 +50,7 @@ export default function AsideDayWeatherInfo({ onClickUserLocation, onClickShowSe
           <img src={iconPin} alt="Location pin" /> <span>{locationName}</span>
         </Location>
       </WeatherInfoAside>
-    </>
+    </HelmetProvider>
   );
 }
 
