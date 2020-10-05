@@ -20,7 +20,7 @@ import {
   NotResultMessage
 } from './styles';
 
-export default function Search({ setShowSearch, setDataLocation, setDataWeather, showSearch }) {
+export default function Search({ setShowSearch, setDataLocation, setDataWeather }) {
   const [nameCountry, setNamecountry] = useState('');
   const [countriesData, setCountriesData] = useState([]);
   const [showNotResults, setShowNotResults] = useState(false);
@@ -35,15 +35,14 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather,
     setIsLoading(true);
     setShowNotResults(false);
 
-    if (nameCountry !== '') {
-      setCountriesData([]);
-      const res = await fetchLocationByName(nameCountry);
-      setCountriesData(res.data);
-      setShowNotResults(res.data.length <= 0);
-    } else {
-      setShowNotResults(true);
+    if (nameCountry.trim() === '') {
+      return setShowNotResults(true);
     }
 
+    const res = await fetchLocationByName(nameCountry);
+
+    setCountriesData(res.data);
+    setShowNotResults(res.data.length <= 0);
     setIsLoading(false);
   };
 
@@ -58,6 +57,8 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather,
 
   const handleCloseSearch = () => {
     setCloseSearch(true);
+
+    // espero que termine la animacion de cerrar
     setTimeout(() => {
       setShowSearch(false);
     }, 550);
@@ -83,7 +84,7 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather,
             <IconArrowRight src={iconArrowRight} />
           </ButtonPlace>
         ))}
-        {showNotResults && <NotResultMessage>There weren&apos;t results :c </NotResultMessage>}
+        {showNotResults && <NotResultMessage>There weren&apos;t results <span role="img" aria-label="Face crying">😢</span></NotResultMessage>}
         { isLoading && <Loader dot />}
       </ContainerPlaces>
     </ContainerSearch>
@@ -93,6 +94,5 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather,
 Search.propTypes = {
   setDataLocation: PropTypes.func.isRequired,
   setDataWeather: PropTypes.func.isRequired,
-  setShowSearch: PropTypes.func.isRequired,
-  showSearch: PropTypes.bool.isRequired
+  setShowSearch: PropTypes.func.isRequired
 };

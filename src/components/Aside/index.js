@@ -18,8 +18,9 @@ const LAT_LONG_SANTA_CRUZ = {
 export default function Aside() {
   const [dataLocation, setDataLocation] = useState({});
   const [showSearch, setShowSearch] = useState(false);
+  const [cacheWeather, setCacheWeather] = useState({});
+  const [dataUserLocation, setDataUserLocation] = useState({});
   const [{ dataDaysWeather, unitTemp }, setDataWeather] = useContext(WeatherContext);
-  const [getUserLocation, setGetUserLocation] = useState(true);
   const [latLong, errorLocation] = useGeolocationLatLong();
 
   const { lat, long } = errorLocation ? LAT_LONG_SANTA_CRUZ : latLong;
@@ -28,31 +29,35 @@ export default function Aside() {
     const getDataLocation = async () => {
       const res = await fetchLocationByLatLong({ lat, long });
       setDataLocation(res.data[0]);
-      setGetUserLocation(false);
+      setDataUserLocation(res.data[0]);
     };
 
-    if (lat && long && getUserLocation) {
+    if (lat && long) {
       getDataLocation();
     }
-  }, [lat, long, getUserLocation]);
+  }, [lat, long]);
 
   useEffect(() => {
     const getDataWeather = async () => {
       const res = await fetchWeather(dataLocation.woeid);
       setDataWeather({ dataDaysWeather: res.data.consolidated_weather, unitTemp: 'c' });
+      setCacheWeather(c => ({ ...c, [dataLocation.woeid]: res.data.consolidated_weather }));
     };
 
     if (Object.keys(dataLocation).length >= 1) {
-      getDataWeather();
+      if (cacheWeather[dataLocation.woeid]) {
+        setDataWeather({ dataDaysWeather: cacheWeather[dataLocation.woeid], unitTemp: 'c' });
+      } else {
+        getDataWeather();
+      }
     }
-  }, [dataLocation, setDataWeather]);
+  }, [dataLocation, setDataWeather, cacheWeather, setCacheWeather]);
 
   const handleClickUserLocation = () => {
     if (errorLocation) {
       alert('To use it, you must enable location service');
-    } else {
-      setDataWeather({ dataDaysWeather: {}, unitTemp: 'c' });
-      setGetUserLocation(true);
+    } else if (dataLocation !== dataUserLocation) {
+      setDataLocation(dataUserLocation);
     }
   };
 
