@@ -7,7 +7,7 @@ export const ContainerWeather = styled.main`
   max-width: 1500px;  
   
   @media (min-width: 768px) {
-    padding: 15px 90px;
+    padding: 15px 75px;
   }
 `;
 
