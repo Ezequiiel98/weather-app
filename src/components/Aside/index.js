@@ -56,7 +56,7 @@ export default function Aside() {
   const handleClickUserLocation = () => {
     if (errorLocation) {
       alert('To use it, you must enable location service');
-    } else {
+    } else if (dataLocation !== dataUserLocation) {
       setDataLocation(dataUserLocation);
     }
   };
