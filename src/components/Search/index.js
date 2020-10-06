@@ -71,7 +71,7 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather 
       </ButtonClose>
       <FormGroup onSubmit={handleSubmit}>
         <ContainerInput>
-          <Input type="text" placeholder="Search location" onChange={handleChange} />
+          <Input type="text" placeholder="Search location" onChange={handleChange} value={nameCountry} />
           <IconSearch src={iconSearch} alt="Magnifying glass" />
         </ContainerInput>
         <Button blue type="submit">Search</Button>
