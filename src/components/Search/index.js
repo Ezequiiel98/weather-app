@@ -32,12 +32,12 @@ export default function Search({ setShowSearch, setDataLocation, setDataWeather 
   const handleSubmit = async e => {
     e.preventDefault();
 
-    setIsLoading(true);
-    setShowNotResults(false);
-
     if (nameCountry.trim() === '') {
       return setShowNotResults(true);
     }
+
+    setIsLoading(true);
+    setShowNotResults(false);
 
     const res = await fetchLocationByName(nameCountry);
 
