@@ -48,7 +48,7 @@ export default function WeatherInfo({
         <Button onClick={handleClickMi} round>MI</Button>
       </ContainerButtons>
       <ContainerInfo>
-        <ItemInfo title="Wind Status" boldText={convertUnitLength(windSpeed, unitLength)} bigText={unitLength === 'mi' ? 'mph' : 'kph'}>
+        <ItemInfo title="Wind Status" boldText={convertUnitLength(windSpeed, unitLength)} bigText={unitLength === 'mi' ? 'mph' : 'km/h'}>
           <ContainerWindDirection>
             <IconDirection degressDirection={windDirection.toFixed(2)}>
               <img src={iconWindDirection} alt="Wind direction" />
