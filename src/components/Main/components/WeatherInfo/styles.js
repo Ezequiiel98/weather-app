@@ -8,6 +8,7 @@ export const ContainerWeatherInfo = styled.div`
 export const Title = styled.h2`
   font-weight: 700;
   font-size: 27px;
+  margin-bottom: 20px;
 `;
 
 export const ContainerInfo = styled.div`
@@ -85,3 +86,19 @@ export const IconDirection = styled.div`
   }
 `;
 
+export const ContainerButtons = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+
+  & * + * {
+    margin: 0 12px;
+  }
+ 
+  & > button {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px;
+  }
+
+`;

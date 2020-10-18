@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import iconWindDirection from 'assets/icons/windDirection.svg';
+import Button from 'components/Button';
+import convertUnitLength from 'helpers/convertUnitLength';
 
 import ItemInfo from '../ItemInfo';
 
@@ -12,7 +14,8 @@ import {
   IconDirection,
   ContainerPercentage,
   Percentage,
-  PercentageFill
+  PercentageFill,
+  ContainerButtons
 } from './styles';
 
 export default function WeatherInfo({
@@ -23,11 +26,29 @@ export default function WeatherInfo({
   visibility,
   humidity
 }) {
+  const [unitLength, setUnitLength] = useState('mi');
+
+  const handleClickKm = () => {
+    if (unitLength === 'mi') {
+      setUnitLength('km');
+    }
+  };
+
+  const handleClickMi = () => {
+    if (unitLength === 'km') {
+      setUnitLength('mi');
+    }
+  };
+
   return (
     <ContainerWeatherInfo>
       <Title>Todays&apos;s Hightlights</Title>
+      <ContainerButtons>
+        <Button onClick={handleClickKm} round light>KM</Button>
+        <Button onClick={handleClickMi} round>MI</Button>
+      </ContainerButtons>
       <ContainerInfo>
-        <ItemInfo title="Wind Status" boldText={windSpeed.toFixed(1)} bigText="mph">
+        <ItemInfo title="Wind Status" boldText={convertUnitLength(windSpeed, unitLength)} bigText={unitLength === 'mi' ? 'mph' : 'kph'}>
           <ContainerWindDirection>
             <IconDirection degressDirection={windDirection.toFixed(2)}>
               <img src={iconWindDirection} alt="Wind direction" />
@@ -45,7 +66,7 @@ export default function WeatherInfo({
             <p>%</p>
           </ContainerPercentage>
         </ItemInfo>
-        <ItemInfo title="Visibility" boldText={visibility.toFixed(1)} bigText="&nbsp;miles" />
+        <ItemInfo title="Visibility" boldText={convertUnitLength(visibility, unitLength)} bigText={unitLength === 'mi' ? '\u00A0miles' : '\u00A0km'} />
         <ItemInfo title="Air Pressure" boldText={Math.floor(airPressure)} bigText="&nbsp;mb" />
       </ContainerInfo>
     </ContainerWeatherInfo>
